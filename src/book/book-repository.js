@@ -15,7 +15,23 @@ class BookRepository{
      * @return {Promise <void>}
      */
     save(book) {
+        return book.getId() ?
+            this.connection('books').update({
+                title        : book.getTitle(),
+                author       : book.getAuthor(),
+                publisher_id : book.getPublisher(),
+                price        : book.getPrice()
+            }).where({id : book.getId()}) :
 
+            this.connection('books').insert({
+                title        : book.getTitle(),
+                author       : book.getAuthor(),
+                publisher_id : book.getPublisher(),
+                price        : book.getPrice()
+            }).then(insertedIds => {
+                book.setId(insertedIds[0]);
+                return book
+            });
     }
 
     /**
@@ -47,3 +63,5 @@ class BookRepository{
     }
 
 }
+
+module.exports = BookRepository;

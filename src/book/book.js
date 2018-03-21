@@ -42,6 +42,14 @@ class Book{
 
     /**
      *
+     * @return {int}
+     */
+    getId(){
+        return this.id;
+    }
+
+    /**
+     *
      * @param {String} title
      * @return self
      */
@@ -82,6 +90,16 @@ class Book{
 
     /**
      *
+     * @param {int} id
+     * @return self
+     */
+    setId(id){
+        this.id = id;
+        return this
+    }
+
+    /**
+     *
      * @return {Object}
      */
     toJson(){
@@ -89,5 +107,6 @@ class Book{
 
         };
     }
-
 }
+
+module.exports = Book;
