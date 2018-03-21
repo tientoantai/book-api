@@ -19,14 +19,14 @@ class BookRepository{
             this.connection('books').update({
                 title        : book.getTitle(),
                 author       : book.getAuthor(),
-                publisher_id : book.getPublisher(),
+                publisher    : book.getPublisher(),
                 price        : book.getPrice()
             }).where({id : book.getId()}) :
 
             this.connection('books').insert({
                 title        : book.getTitle(),
                 author       : book.getAuthor(),
-                publisher_id : book.getPublisher(),
+                publisher    : book.getPublisher(),
                 price        : book.getPrice()
             }).then(insertedIds => {
                 book.setId(insertedIds[0]);
