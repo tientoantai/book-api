@@ -40,7 +40,11 @@ class BookRepository{
      * @return {Promise <void>}
      */
     remove(id) {
-
+        return this.connection('books').update({
+            deleted_at : new Date().getTime()
+        }).where({
+            id : id
+        });
     }
 
     /**
