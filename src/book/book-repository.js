@@ -1,4 +1,4 @@
-
+const Book = require('./book');
 class BookRepository{
 
     /**
@@ -50,11 +50,19 @@ class BookRepository{
     /**
      *
      * @param {int}id
-     * @return {Book}
+     * @return {Promise<Book>}
      */
     get(id){
-
-        return book;
+        return this.connection('books').select('id', 'title', 'author', 'publisher', 'price')
+            .where({'books.deleted_at': null}).limit(1)
+            .then((booksRaw) => {
+                let bookRaw = booksRaw.shift();
+                let book = new Book(bookRaw.title, bookRaw.author);
+                book.setId(bookRaw.id);
+                book.setPublisher(bookRaw.publisher);
+                book.setPrice(bookRaw.price);
+                return book
+            });
     }
 
 
