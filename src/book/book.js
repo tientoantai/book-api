@@ -12,10 +12,18 @@ class Book{
        this.author = author ;
     }
 
+    /**
+     *
+     * @return {String}
+     */
     getTitle(){
        return this.title;
     }
 
+    /**
+     *
+     * @return {String}
+     */
     getAuthor(){
         return this.author;
     }
@@ -24,6 +32,10 @@ class Book{
         return this.publisher;
     }
 
+    /**
+     *
+     * @return {float}
+     */
     getPrice(){
         return this.price;
     }
