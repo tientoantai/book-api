@@ -40,26 +40,50 @@ class Book{
         return this.price;
     }
 
+    /**
+     *
+     * @param {String} title
+     * @return self
+     */
     setTitle(title){
         this.title = title;
         return this;
     }
 
+    /**
+     *
+     * @param {String} author
+     * @return self
+     */
     setAuthor(author){
         this.author = author;
         return this;
     }
 
+    /**
+     *
+     * @param publisher
+     * @return self
+     */
     setPublisher(publisher){
         this.publisher = publisher;
         return this;
     }
 
+    /**
+     *
+     * @param {float}price
+     * @return self
+     */
     setPrice(price){
         this.price = price;
         return this
     }
 
+    /**
+     *
+     * @return {Object}
+     */
     toJson(){
         return {
 
