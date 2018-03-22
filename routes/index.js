@@ -13,4 +13,6 @@ router.post('/book', bookMaker, bookController.addBook);
 
 router.get('/book/:id', bookController.getBook);
 
+router.put('/book', bookMaker, bookController.updateBook);
+
 module.exports = router;

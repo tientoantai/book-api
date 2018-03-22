@@ -104,7 +104,11 @@ class Book{
      */
     toJson(){
         return {
-
+            id          : this.getId(),
+            title       : this.getTitle(),
+            author      : this.getAuthor(),
+            publisher   : this.getPublisher(),
+            price       : this.getPrice(),
         };
     }
 }

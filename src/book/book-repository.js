@@ -21,8 +21,8 @@ class BookRepository{
                 author       : book.getAuthor(),
                 publisher    : book.getPublisher(),
                 price        : book.getPrice()
-            }).where({id : book.getId()}) :
-
+            }).where({id : book.getId()})
+            :
             this.connection('books').insert({
                 title        : book.getTitle(),
                 author       : book.getAuthor(),
@@ -61,7 +61,7 @@ class BookRepository{
                 book.setId(bookRaw.id);
                 book.setPublisher(bookRaw.publisher);
                 book.setPrice(bookRaw.price);
-                return book
+                return book;
             });
     }
 
