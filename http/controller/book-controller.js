@@ -28,6 +28,14 @@ class BookController{
         }).catch(next);
     }
 
+    allBook(req, res, next){
+            let bookRepo = req.app.get('book.repo');
+            bookRepo.all().then(function(books){
+                res.status(200).json(books.map(book => {
+                    return book.toJson();
+                }));
+            }).catch(next);
+        }
 
 }
 
