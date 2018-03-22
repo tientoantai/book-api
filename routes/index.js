@@ -11,4 +11,6 @@ let bookController  = new BookController();
 
 router.post('/book', bookMaker, bookController.addBook);
 
+router.get('/book/:id', bookController.getBook);
+
 module.exports = router;
