@@ -8,9 +8,10 @@ const BookRepository = require('./src/book/book-repository');
 const BookFactory    = require('./src/book/book-factory');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+// var users = require('./routes/users');
 
 var connection = require('./database/mysql-connection');
+var bookFactory = new BookFactory();
 
 var app = express();
 
@@ -18,7 +19,8 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'pug');
 
-app.set('book.repo', new BookRepository(connection, new BookFactory()));
+app.set('book.repo', new BookRepository(connection, bookFactory));
+app.set('book.factory', bookFactory);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
