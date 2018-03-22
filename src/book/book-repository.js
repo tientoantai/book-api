@@ -5,8 +5,9 @@ class BookRepository{
      *
      * @param connection
      */
-    constructor(connection) {
+    constructor(connection, factory) {
         this.connection = connection;
+        this.factory    = factory;
     }
 
     /**
@@ -57,11 +58,7 @@ class BookRepository{
             .where({'id': id,'books.deleted_at': null}).limit(1)
             .then((booksRaw) => {
                 let bookRaw = booksRaw.shift();
-                let book = new Book(bookRaw.title, bookRaw.author);
-                book.setId(bookRaw.id);
-                book.setPublisher(bookRaw.publisher);
-                book.setPrice(bookRaw.price);
-                return book;
+                return this.factory.make(bookRaw);
             });
     }
 
@@ -74,11 +71,7 @@ class BookRepository{
         return this.connection('books').select('id', 'title', 'author', 'publisher', 'price')
             .where({'books.deleted_at': null})
             .then((booksRaw) => booksRaw.map(bookRaw => {
-                let book = new Book(bookRaw.title, bookRaw.author);
-                book.setId(bookRaw.id);
-                book.setPublisher(bookRaw.publisher);
-                book.setPrice(bookRaw.price);
-                return book
+                return this.factory.make(bookRaw)
             }));
     }
 
