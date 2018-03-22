@@ -2,6 +2,11 @@ const Book = require('./book');
 
 class BookFactory{
 
+    /**
+     *
+     * @param {Object}bookRaw
+     * @return {Book}
+     */
     make(bookRaw){
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setPublisher(bookRaw.publisher);
