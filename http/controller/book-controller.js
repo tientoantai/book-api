@@ -17,7 +17,14 @@ class BookController{
     updateBook(req, res, next){
         let bookRepo = req.app.get('book.repo');
         bookRepo.save(req.book).then(function(result){
-            res.status(200).json({messge: 'Updated!'});
+            res.status(200).json({message: 'Updated!'});
+        }).catch(next);
+    }
+
+    deleteBook(req, res, next){
+        let bookRepo = req.app.get('book.repo');
+        bookRepo.remove(req.params.id).then(function(result){
+            res.status(200).json({message: 'Deleted!'});
         }).catch(next);
     }
 

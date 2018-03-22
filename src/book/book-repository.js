@@ -41,7 +41,7 @@ class BookRepository{
      */
     remove(id) {
         return this.connection('books').update({
-            deleted_at : new Date().getTime()
+            deleted_at : new Date().getTime().toString()
         }).where({
             id : id
         });
