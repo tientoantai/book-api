@@ -85,7 +85,7 @@ class Book{
      */
     setPrice(price){
         this.price = price;
-        return this
+        return this;
     }
 
     /**
@@ -95,7 +95,43 @@ class Book{
      */
     setId(id){
         this.id = id;
-        return this
+        return this;
+    }
+
+    /**
+     *
+     * @param {string}thumbnail
+     * @return self
+     */
+    setThumbnail(thumbnail){
+        this.thumbnail = thumbnail;
+        return this;
+    }
+
+    /**
+     *
+     * @return {string}
+     */
+    getThumbnail(){
+        return this.thumbnail;
+    }
+
+    /**
+     *
+     * @return {string}
+     */
+    getDescription(){
+        return this.description;
+    }
+
+    /**
+     *
+     * @param {string}description
+     * @return self
+     */
+    setDescription(description){
+        this.description = description;
+        return this;
     }
 
     /**
@@ -109,6 +145,8 @@ class Book{
             author      : this.getAuthor(),
             publisher   : this.getPublisher(),
             price       : this.getPrice(),
+            thumbnail   : this.getThumbnail(),
+            description : this.getDescription(),
         };
     }
 }

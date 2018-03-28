@@ -54,7 +54,7 @@ class BookRepository{
      * @return {Promise<Book>}
      */
     get(id){
-        return this.connection('books').select('id', 'title', 'author', 'publisher', 'price')
+        return this.connection('books').select('id', 'title', 'author', 'publisher', 'price', 'thumbnail', 'description')
             .where({'id': id,'books.deleted_at': null}).limit(1)
             .then((booksRaw) => {
                 let bookRaw = booksRaw.shift();
@@ -68,7 +68,7 @@ class BookRepository{
      *@return {Promise <Book[]>}
      */
     all(){
-        return this.connection('books').select('id', 'title', 'author', 'publisher', 'price')
+        return this.connection('books').select('id', 'title', 'author', 'publisher', 'price', 'thumbnail', 'description')
             .where({'books.deleted_at': null})
             .then((booksRaw) => booksRaw.map(bookRaw => {
                 return this.factory.make(bookRaw)

@@ -11,6 +11,8 @@ class BookFactory{
         let book = new Book(bookRaw.title, bookRaw.author);
         book.setPublisher(bookRaw.publisher);
         book.setPrice(bookRaw.price);
+        book.setThumbnail(bookRaw.thumbnail);
+        book.setDescription(bookRaw.description);
         if ( ! ! bookRaw.id){
             book.setId(bookRaw.id);
         }
